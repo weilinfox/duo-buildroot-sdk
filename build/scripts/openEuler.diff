@@ -1,0 +1,97 @@
+diff --git a/build/boards/cv180x/cv1800b_milkv_duo_sd/linux/cvitek_cv1800b_milkv_duo_sd_defconfig b/build/boards/cv180x/cv1800b_milkv_duo_sd/linux/cvitek_cv1800b_milkv_duo_sd_defconfig
+index 1f387e7cd..9661ae144 100644
+--- a/build/boards/cv180x/cv1800b_milkv_duo_sd/linux/cvitek_cv1800b_milkv_duo_sd_defconfig
++++ b/build/boards/cv180x/cv1800b_milkv_duo_sd/linux/cvitek_cv1800b_milkv_duo_sd_defconfig
+@@ -346,3 +346,24 @@ CONFIG_EPOLL=y
+ CONFIG_ELF_CORE=y
+ CONFIG_COREDUMP=y
+ CONFIG_PROC_SYSCTL=y
++
++# for openEuler
++CONFIG_CGROUPS=y
++CONFIG_CGROUP_FREEZER=y
++CONFIG_CGROUP_PIDS=y
++CONFIG_CGROUP_DEVICE=y
++CONFIG_CPUSETS=y
++CONFIG_PROC_PID_CPUSET=y
++CONFIG_CGROUP_CPUACCT=y
++CONFIG_PAGE_COUNTER=y
++CONFIG_MEMCG=y
++CONFIG_CGROUP_SCHED=y
++CONFIG_NAMESPACES=y
++CONFIG_OVERLAY_FS=y
++CONFIG_AUTOFS4_FS=y
++CONFIG_SIGNALFD=y
++CONFIG_TIMERFD=y
++CONFIG_EPOLL=y
++CONFIG_IPV6=y
++CONFIG_FANOTIFY
++
+diff --git a/build/boards/cv180x/cv1800b_milkv_duo_sd/memmap.py b/build/boards/cv180x/cv1800b_milkv_duo_sd/memmap.py
+index 84161267a..388895702 100644
+--- a/build/boards/cv180x/cv1800b_milkv_duo_sd/memmap.py
++++ b/build/boards/cv180x/cv1800b_milkv_duo_sd/memmap.py
+@@ -40,7 +40,7 @@ class MemoryMap:
+     # =================
+     # Multimedia buffer. Used by u-boot/kernel/FreeRTOS
+     # =================
+-    ION_SIZE = 26.80078125 * SIZE_1M
++    ION_SIZE = 0
+     H26X_BITSTREAM_SIZE = 0 * SIZE_1M
+     H26X_ENC_BUFF_SIZE = 0
+     ISP_MEM_BASE_SIZE = 0 * SIZE_1M
+diff --git a/build/boards/cv181x/cv1812cp_milkv_duo256m_sd/linux/cvitek_cv1812cp_milkv_duo256m_sd_defconfig b/build/boards/cv181x/cv1812cp_milkv_duo256m_sd/linux/cvitek_cv1812cp_milkv_duo256m_sd_defconfig
+index d794b9c22..22705f859 100644
+--- a/build/boards/cv181x/cv1812cp_milkv_duo256m_sd/linux/cvitek_cv1812cp_milkv_duo256m_sd_defconfig
++++ b/build/boards/cv181x/cv1812cp_milkv_duo256m_sd/linux/cvitek_cv1812cp_milkv_duo256m_sd_defconfig
+@@ -296,3 +296,24 @@ CONFIG_EPOLL=y
+ CONFIG_ELF_CORE=y
+ CONFIG_COREDUMP=y
+ CONFIG_PROC_SYSCTL=y
++
++# for openEuler
++CONFIG_CGROUPS=y
++CONFIG_CGROUP_FREEZER=y
++CONFIG_CGROUP_PIDS=y
++CONFIG_CGROUP_DEVICE=y
++CONFIG_CPUSETS=y
++CONFIG_PROC_PID_CPUSET=y
++CONFIG_CGROUP_CPUACCT=y
++CONFIG_PAGE_COUNTER=y
++CONFIG_MEMCG=y
++CONFIG_CGROUP_SCHED=y
++CONFIG_NAMESPACES=y
++CONFIG_OVERLAY_FS=y
++CONFIG_AUTOFS4_FS=y
++CONFIG_SIGNALFD=y
++CONFIG_TIMERFD=y
++CONFIG_EPOLL=y
++CONFIG_IPV6=y
++CONFIG_FANOTIFY
++
+diff --git a/device/milkv-duo/genimage.cfg b/device/milkv-duo/genimage.cfg
+index 71938363b..943583bd3 100644
+--- a/device/milkv-duo/genimage.cfg
++++ b/device/milkv-duo/genimage.cfg
+@@ -13,7 +13,7 @@ image rootfs.ext4 {
+ 	ext4 {
+ 		label = "rootfs"
+ 	}
+-	size = 768M
++	size = 4096M
+ }
+ 
+ image milkv-duo.img {
+diff --git a/device/milkv-duo256m/genimage.cfg b/device/milkv-duo256m/genimage.cfg
+index 027bde1eb..3b519a3fe 100644
+--- a/device/milkv-duo256m/genimage.cfg
++++ b/device/milkv-duo256m/genimage.cfg
+@@ -13,7 +13,7 @@ image rootfs.ext4 {
+ 	ext4 {
+ 		label = "rootfs"
+ 	}
+-	size = 768M
++	size = 4096M
+ }
+ 
+ image milkv-duo256m.img {
