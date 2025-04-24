@@ -17,11 +17,18 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${SAFETY_FLAGS}")
 include(${TOP_DIR}/scripts/ParseConfiguration.cmake)
 ParseConfiguration("${BUILD_ENV_PATH}/.config")
 
+if (RUN_TYPE STREQUAL "CVIRTOS")
 if (CHIP STREQUAL "cv1835")
     add_subdirectory(comm)
 elseif (CHIP STREQUAL "cv181x" OR CHIP STREQUAL "cv180x")
     add_subdirectory(comm)
 endif()
+elseif (RUN_TYPE STREQUAL "RADIO_DEMO")
+if (CHIP STREQUAL "cv180x")
+    add_subdirectory(radio)
+endif()
+endif()
+
 
 if(CONFIG_BOARD STREQUAL "cv181x_fpga" OR CONFIG_BOARD STREQUAL "cv181x_fpga_c906")
 	add_compile_definitions(FPGA_PORTING)

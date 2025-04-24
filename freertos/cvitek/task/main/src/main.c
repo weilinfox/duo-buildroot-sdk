@@ -94,6 +94,8 @@ static void prvSetupHardware(void);
  */
 #ifdef CVIRTOS
 extern void main_cvirtos(void);
+#elif defined RADIO_DEMO
+extern void main_radio(void);
 #else
 #error Invalid RUN_TYPE setting in build.sh.  See the comments at the top of this file and above the RUN_TYPE definition.
 #endif
@@ -133,6 +135,8 @@ int main(void)
 	{
 		main_cvirtos();
 	}
+#elif defined RADIO_DEMO
+	main_radio();
 #else
 #error "Not correct running definition"
 #endif

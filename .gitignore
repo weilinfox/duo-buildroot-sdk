@@ -20,3 +20,6 @@ ncscope.*
 
 __pycache__
 .vscode
+
+freertos/cvitek/task/.idea/
+freertos/cvitek/task/cmake-build-debug/
